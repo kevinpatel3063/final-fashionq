@@ -1,0 +1,32 @@
+
+{% extends "block_hf.html" %}
+{% load static %}
+{% block content %}
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background: url({% static 'img/images/heading_1.jpg' %}); background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;">
+    <h1 class="text-center text-white display-6">Sales & Refund</h1>
+    <!-- <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Checkout</li>
+    </ol> -->
+</div>
+<br>
+<br>
+<!-- Single Page Header End -->
+<div style="color: black; margin-left: 200px; margin-right: 200px;">
+
+    <h3>Currently Our website has no return and refund policy. Our team is continuously working on that,Return and refund policy is under testing mode,it will be available for the customer very soon.</h3>
+</div>
+<br>
+<br>
+<a href="{% url 'index' %}">
+    <center> 
+
+      <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button"><i class="fa fa-arrow-left"></i>&nbsp;Back to Home Page</button>
+    </center>
+</a>
+
+{% endblock content %}

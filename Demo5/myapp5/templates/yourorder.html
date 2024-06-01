@@ -1,0 +1,192 @@
+
+
+{% extends "block_hf.html" %}
+{% load static %}
+{% block content %}
+
+{% if request.session.cart%}
+<br><br>
+
+<div> 
+                
+    <br><br><br>
+    <center>
+        <h1 class="mb-4"><br>
+            <i class="fa fa-shopping-bag fa-2x"></i>
+        </h1>
+        <a href="{% url 'shop' %}">
+            <h1 class="mb-4"> <br>You Have Not Ordered Anything </h1>
+            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button"><i class="fa fa-arrow-left"></i>&nbsp;Continue Shopping</button>
+        </a>
+    </center>
+
+</div>
+      
+
+{% else %}
+{% load cart_tag %}
+
+
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background: url({% static 'img/images/heading_1.jpg' %}); background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;">
+    
+    <h1 class="text-center text-white display-6">Your Order</h1>
+    <!-- <ol class="breadcrumb justify-content-center mb-0">
+         <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Cart</li> 
+    </ol> -->
+</div>
+<!-- Single Page Header End -->
+
+
+<!-- Cart Page Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    {% comment %} <th scope="col">Handle</th> {% endcomment %}
+                  </tr>
+                </thead>
+                <tbody>
+
+                 {% for value in order %}
+                    <tr>
+                        <th scope="row">
+                             <div class="d-flex align-items-center">
+                                <img src="{{value.image}}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                            </div> 
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">{{value.product | truncatewords:7}}</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.{{value.price}}</p>
+                        </td>
+                        
+                        <td class="cart_quantity">
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                {% comment %} <div class="input-group-btn">
+                                    <a href="{% url 'item_decrement' value.product_id %}">
+                                        {% comment %} <button class="btn btn-sm btn-minus rounded-circle bg-light border" > {% endcomment %}
+                                            {% comment %} <i class="fa fa-minus"></i> 
+                                        </button>
+                                    </a>
+                                </div> {% endcomment %}
+                                <b><input type="text" name="qtybutton" class="form-control form-control-sm text-center border-0" value="{{value.quantity}}"></b>
+                                
+                                {% comment %} <div class="input-group-btn">
+                                    <a href="{% url 'item_increment' value.product_id %}">
+                                        {% comment %} <button class="btn btn-sm btn-plus rounded-circle bg-light border"> {% endcomment %}
+                                            {% comment %} <i class="fa fa-plus"></i> 
+                                        </button>
+                                    </a>
+                                </div> {% endcomment %}
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.{{ value.price }}</p>
+                        </td>
+                        {% comment %} <td>
+                            <a href="{% url 'item_clear' key %}">
+                                <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                    <i class="fa fa-times text-danger"></i>
+                                </button>
+                            </a>
+                        </td> {% endcomment %}
+                    
+                    </tr>
+
+                 {% endfor %}
+                    {% comment %} <tr>
+                        <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static '/img/images/mancat_1.jpeg' %}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+                            </div> 
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">Logo T-Shirts</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.899</p>
+                        </td>
+                        <td>
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                    <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.899</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                <i class="fa fa-times text-danger"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static '/img/images/manshop_1.jpeg' %}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+                            </div>
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">Denim Jacket</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.1499</p>
+                        </td>
+                        <td>
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                    <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.1499</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                <i class="fa fa-times text-danger"></i>
+                            </button>
+                        </td>
+                    </tr> {% endcomment %}
+                </tbody>
+            </table>
+        </div>
+       
+        
+
+{% endif %}
+
+
+{% endblock content %}

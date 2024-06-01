@@ -1,0 +1,477 @@
+
+{% extends "block_hf.html" %}
+{% load static %}
+{% block content %}
+ <!-- Hero Start -->
+ <div class="container-fluid py-5 mb-5 hero-header" style="background: url({% static 'img/images/hell.jpeg' %}); background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;">
+  <div class="container py-5">
+      <div class="row g-5 align-items-center">
+          <div class="col-md-12 col-lg-7">
+              <h4 class="mb-3 text-secondary" >KYU KREN FASHION!!!</h4>
+              <h1 class="mb-5 display-3 text-primary">Trending Fashion Wear </h1>
+              <div class="position-relative mx-auto">
+                {% comment %} <form action="/sea" method="get">
+                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="text" placeholder="Search" name="Query" id="query">
+                    <button type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style="top: 0; right: 25%;">Search</button>
+                </form> {% endcomment %}
+              </div>
+          </div>
+          <div class="col-md-12 col-lg-5">
+              <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                  <div class="carousel-inner" role="listbox">
+                      <div class="carousel-item active rounded">
+                          <img src="{% static '/img/images/heading_1.jpg' %}" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                          <!-- <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a> -->
+                      </div>
+                      <div class="carousel-item rounded">
+                          <img src="{% static '/img/images/slideshow_2.jpeg' %}" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                          <!-- <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a> -->
+                      </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Hero End -->
+
+
+
+
+
+<!-- Fashion Shop Start-->
+<div class="container-fluid fruite py-5">
+  <div class="container py-5">
+      <div class="tab-class text-center">
+          <div class="row g-4">
+            <h1>Shop by Categories</h1>
+              <div class="col-lg-4 text-start">
+                  <br>
+              </div>
+              
+          </div>
+          <div class="tab-content">
+              <div id="tab-1" class="tab-pane fade show p-0 active">
+                  <div class="row g-4">
+                      <div class="col-lg-12">
+                          <div class="row g-4">
+                            {% for cat in categories%}
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <a href="/shop?categories={{cat.id}}" ><img src="{{cat.image}}" class="img-fluid w-100 rounded-top" alt=""></a>
+                                      </div>
+                                      {% comment %} <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">{{prod.sub_category}}</div> {% endcomment %}
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>{{cat.name}}</h4>
+                                          {% comment %} <p>{{prod.name | truncatewords:50}}</p> {% endcomment %}
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              {% comment %} <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.{{prod.price}}</b></p> {% endcomment %}
+                                              {% comment %} <a href="{% url 'cart_add' prod.id %}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a> {% endcomment %}
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            {%endfor%}
+                              
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {% comment %} <div id="tab-2" class="tab-pane fade show p-0">
+                  <div class="row g-4">
+                      <div class="col-lg-12">
+                          <div class="row g-4">
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/manshop_1.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Men</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Turns</h4>
+                                          <p>Mens Denim Jackets</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.1499</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/manshop_2.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Men</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Banana Leaf</h4>
+                                          <p>Mens Plain Over-Sized Hoodie</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.849</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="tab-3" class="tab-pane fade show p-0">
+                  <div class="row g-4">
+                      <div class="col-lg-12">
+                          <div class="row g-4">
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/womenshop_1.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Women</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Simaanas</h4>
+                                          <p>Womens Cotton Two-Piece Suit</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.3499</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/womenshop_2.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Women</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Demons</h4>
+                                          <p>Velvet Princess Coat</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.2499</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="tab-4" class="tab-pane fade show p-0">
+                  <div class="row g-4">
+                      <div class="col-lg-12">
+                          <div class="row g-4">
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/kidshop_1.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Kids</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Jack & Jony</h4>
+                                          <p>Boys 3pcs Pair </p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.2199</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/kidshop_2.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Kids</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Jack & Jony</h4>
+                                          <p>Girls Cotton A-line Dress</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.1399</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="tab-5" class="tab-pane fade show p-0">
+                  <div class="row g-4">
+                      <div class="col-lg-12">
+                          <div class="row g-4">
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/beautyshop_1.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Beauty</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Queens</h4>
+                                          <p>Premium Day Face Cream</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.799</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 col-lg-4 col-xl-3">
+                                  <div class="rounded position-relative fruite-item">
+                                      <div class="fruite-img">
+                                          <img src="{% static '/img/images/beautyshop_2.jpeg' %}" class="img-fluid w-100 rounded-top" alt="">
+                                      </div>
+                                      <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Beauty</div>
+                                      <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                          <h4>Noble Queens</h4>
+                                          <p>Shampoo Conditioner(400ml)</p>
+                                          <div class="d-flex justify-content-between flex-lg-wrap">
+                                              <p class="text-dark fs-5 fw-bold mb-0"><b>Rs.699</b></p>
+                                              <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>      
+  </div>
+</div> {% endcomment %}
+<!-- Fashion Shop End-->
+<!-- Featurs Section Start -->
+<div class="container-fluid featurs py-5">
+    <div class="container py-5">
+        <div class="row g-4">
+          <h1>Features</h1>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-car-side fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Free Shipping</h5>
+                        <p class="mb-0">Free Shipping over 700₹ order</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-user-shield fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Secure Payment System</h5>
+                        <p class="mb-0">100% secure payment System</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-exchange-alt fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>15 Days Return Policy</h5>
+                        <p class="mb-0">15 Days Money Back Guarantee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fa fa-phone-alt fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>24x7 Support</h5>
+                        <p class="mb-0">24x7 Fast Support System</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Featurs Section End -->
+
+ <!-- Banner Section Start-->
+ <div class="container-fluid banner bg-secondary my-5">
+    <div class="container py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="py-4">
+                    <h1 class="display-3 text-white">Trending Denims</h1>
+                    <p class="fw-normal display-3 text-dark mb-4">in Our Store</p>
+                    <p class="mb-4 text-dark">From bootcut flares to patchwork jeans, check out top denim trends that you must add to your jeans collection in 2024.</p>
+                    
+                    <a href="{% url 'shop' %}">
+                        
+                        <button class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5" type="button">BUY NOW &nbsp;<i class="fa fa-arrow-right"></i></button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="{% static 'img/images/womencat_1.jpeg' %}" alt="" height="500px">
+                    <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute" style="width: 140px; height: 140px; top: 0; left: 0;">
+                        <h1 style="font-size: 100px;"></h1>
+                        <div class="d-flex flex-column">
+                            <span class="h2 mb-0">Sale </span>
+                            <span class="h4 text-muted mb-0">upto 50%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% comment %} class="img-fluid w-100 rounded"  {% endcomment %}
+<!-- Banner Section End -->
+
+<!-- Fact Start -->
+<div class="container-fluid py-5">
+  <div class="container">
+      <div class="bg-light p-5 rounded">
+          <div class="row g-4 justify-content-center">
+              <div class="col-md-6 col-lg-6 col-xl-3">
+                  <div class="counter bg-white rounded p-5">
+                      <i class="fa fa-users text-secondary"></i>
+                      <h4>satisfied customers</h4>
+                      <h1>1963</h1>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-3">
+                  <div class="counter bg-white rounded p-5">
+                      <i class="fa fa-users text-secondary"></i>
+                      <h4>quality of service</h4>
+                      <h1>99%</h1>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-3">
+                  <div class="counter bg-white rounded p-5">
+                      <i class="fa fa-users text-secondary"></i>
+                      <h4>quality certificates</h4>
+                      <h1>3</h1>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xl-3">
+                  <div class="counter bg-white rounded p-5">
+                      <i class="fa fa-users text-secondary"></i>
+                      <h4>Available Products</h4>
+                      <h1>9</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Fact Start -->
+
+
+<!-- Tastimonial Start -->
+<div class="container-fluid testimonial py-5">
+  <div class="container py-5">
+      <div class="testimonial-header text-center">
+          <h4 class="text-primary">Our Testimonial</h4>
+          <h1 class="display-5 mb-5 text-dark">Our Client Saying!</h1>
+      </div>
+      <div class="owl-carousel testimonial-carousel">
+          <div class="testimonial-item img-border-radius bg-light rounded p-4">
+              <div class="position-relative">
+                  <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                  <div class="mb-4 pb-4 border-bottom border-secondary">
+                      <p class="mb-0">Good quality product, Highly Recommended.
+                      </p>
+                  </div>
+                  <div class="d-flex align-items-center flex-nowrap">
+                      <div class="bg-secondary rounded">
+                          <img src="{% static '/img/images/testimonial_1.jpg' %}" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                      </div>
+                      <div class="ms-4 d-block">
+                          <h4 class="text-dark">Gautam Patel</h4>
+                          <p class="m-0 pb-3">Bussinessman</p>
+                          <div class="d-flex pe-5">
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="testimonial-item img-border-radius bg-light rounded p-4">
+              <div class="position-relative">
+                  <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                  <div class="mb-4 pb-4 border-bottom border-secondary">
+                      <p class="mb-0">Good quality Fabrics, Highly Recommended.
+                      </p>
+                  </div>
+                  <div class="d-flex align-items-center flex-nowrap">
+                      <div class="bg-secondary rounded">
+                          <img src="{% static '/img/images/testimonial_2.jpg' %}" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                      </div>
+                      <div class="ms-4 d-block">
+                          <h4 class="text-dark">Ananya Patil</h4>
+                          <p class="m-0 pb-3">Entrepreneur</p>
+                          <div class="d-flex pe-5">
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="testimonial-item img-border-radius bg-light rounded p-4">
+              <div class="position-relative">
+                  <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
+                  <div class="mb-4 pb-4 border-bottom border-secondary">
+                      <p class="mb-0">Good quality product, Highly Recommended.
+                      </p>
+                  </div>
+                  <div class="d-flex align-items-center flex-nowrap">
+                      <div class="bg-secondary rounded">
+                          <img src="{% static '/img/images/testimonial_3.jpg' %}" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                      </div>
+                      <div class="ms-4 d-block">
+                          <h4 class="text-dark">Saurav Singh</h4>
+                          <p class="m-0 pb-3">Influencer</p>
+                          <div class="d-flex pe-5">
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                              <i class="fas fa-star text-primary"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Tastimonial End -->
+
+
+
+{% endblock content %}

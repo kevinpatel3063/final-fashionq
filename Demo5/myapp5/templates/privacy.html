@@ -1,0 +1,53 @@
+
+{% extends "block_hf.html" %}
+{% load static %}
+{% block content %}
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background: url({% static 'img/images/heading_1.jpg' %}); background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;">
+    <h1 class="text-center text-white display-6">Privacy Policies</h1>
+    <!-- <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Checkout</li>
+    </ol> -->
+</div> <br><br>
+<div style="color: black; margin-left: 200px; margin-right: 200px;">
+
+    <b><h3>Welcome to Fashion-Q. This Privacy Policy explains how we collect, use, disclose, and protect your information. By using our website , you agree to the terms of this Privacy Policy.</h3></b> <br>
+    <br>
+    
+    <h3>Information We Collect :-</h3>
+    
+    
+    <b><h4>Personal Information:</h4></b> 
+    - Name <br>
+    - Email address <br>
+    - Mailing address <br>
+    - Phone number <br>
+    - Payment information <br>
+    - Purchase history <br>
+    
+     <b><h4>Non-Personal Information: </h4></b>
+    - Browser type <br>
+    - Device type <br>
+    - Operating system <br>
+    - IP address <br>
+    - Referring/exit pages <br>
+    - Date/time stamps
+</div>
+<br>
+<br>
+<a href="{% url 'index' %}">
+    <center> 
+
+      <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button"><i class="fa fa-arrow-left"></i>&nbsp;Back to Home Page</button>
+    </center>
+</a>
+
+
+<!-- Single Page Header End -->
+
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+
+{% extends "block_hf.html" %}
+{% load static %}
+{% block content %}
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background: url({% static 'img/images/heading_1.jpg' %}); background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;">
+    
+    
+    <h1 class="text-center text-white display-6">Terms & Condotions</h1>
+    <!-- <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Checkout</li>
+    </ol> -->
+</div> <br><br>
+<div style="color: black; margin-left: 200px; margin-right: 200px;">
+
+    <b><h3>Welcome to Fashion-Q. By using our website , you agree to these Terms and Conditions. If you do not agree, do not use our site.</h3></b> <br>
+    <br>
+    
+    <h3>1.Use of the Website :-</h3>
+    
+    
+    <b><h4>1.1 Eligibility</h4></b> 
+    - You must be at least 18 years old to use our website. <br>
+    <b><h4>1.2 Account Registration</h4></b>
+    - Provide accurate information when creating an account and keep it updated. You are responsible for your account security. <br>
+ <br>
+    <h3>2.Orders and Payments :-</h3>
+    <b><h4>2.1 Order Acceptance</h4></b> 
+    - We reserve the right to accept or cancel any order. <br>
+    <b><h4>2.2 Pricing and Availability</h4></b> 
+    - Prices and availability may change. Errors will be corrected, and affected orders may be canceled.<br>
+ <br>
+    <h3>3.Shiping and Delivery :-</h3>
+    <b><h4>3.1 Shipping </h4></b>
+    - We ship to the address you provide. Shipping times and costs vary.<br>
+    <b><h4>3.2 Delivery </h4></b>
+    - Delivery dates are estimates. We are not liable for delays.<br>
+    
+    
+</div>
+<br>
+<br>
+<a href="{% url 'registration' %}">
+    <center> 
+
+      <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
+    </center>
+</a>
+<!-- Single Page Header End -->
+
+
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends 'block_hf.html' %}
+{% load static %}
+{% load cart_tag %}
+{% block content %}
+  
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background: url({% static 'img/images/heading_1.jpg' %}); background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;">
+<h1 class="text-center text-white display-6">User Details</h1>
+<!-- <ol class="breadcrumb justify-content-center mb-0">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+    <li class="breadcrumb-item active text-white">Checkout</li>
+</ol> -->
+</div>
+
+
+<div class="user-details">
+    <div class="center-btn">
+      <center><h1>User Information</h1></center>
+    </div>
+     <center>
+       <b><h3>User Name  : &nbsp;{{user.username}}</h3></b>
+       <b><h3>First Name : &nbsp;{{user.first_name}}</h3></b>
+       <b><h3>Last Name  : &nbsp;{{user.last_name}}</h3></b>
+       <b><h3>Email      : &nbsp;{{user.email}}</h3></b>
+       {% comment %} <b><h3>Name : &nbsp;{{user.first_name}}</h3></b> {% endcomment %}
+       
+      </center>
+    
+    
+
+    <br>
+   
+    <a href="{% url 'index' %}">
+      <center> 
+
+        <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button"><i class="fa fa-arrow-left"></i>&nbsp;Back to Home Page</button>
+      </center>
+  </a>
+
+  </div>
+<!-- Single Page Header End -->
+{% endblock %}

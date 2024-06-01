@@ -1,0 +1,235 @@
+
+
+{% extends "block_hf.html" %}
+{% load static %}
+{% block content %}
+
+{% if request.session.cart|length < 1%}
+<br><br>
+
+<div> 
+                
+    <br><br><br>
+    <center>
+        <h1 class="mb-4"><br>
+            <i class="fa fa-shopping-bag fa-2x"></i>
+        </h1>
+        <a href="{% url 'shop' %}">
+            <h1 class="mb-4"> <br>There is no item in cart</h1>
+            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button"><i class="fa fa-arrow-left"></i>&nbsp;Continue Shopping</button>
+        </a>
+    </center>
+
+</div>
+      
+
+{% else %}
+{% load cart_tag %}
+
+
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background: url({% static 'img/images/heading_1.jpg' %}); background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;">
+    
+    <h1 class="text-center text-white display-6">Cart</h1>
+    <!-- <ol class="breadcrumb justify-content-center mb-0">
+         <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+        <li class="breadcrumb-item active text-white">Cart</li> 
+    </ol> -->
+</div>
+<!-- Single Page Header End -->
+
+
+<!-- Cart Page Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                 {% for key,value in request.session.cart.items %}
+                    <tr>
+                        <th scope="row">
+                             <div class="d-flex align-items-center">
+                                <img src="{{value.image}}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                            </div> 
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">{{value.name | truncatewords:7}}</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.{{value.price}}</p>
+                        </td>
+                        
+                        <td class="cart_quantity">
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <div class="input-group-btn">
+                                    <a href="{% url 'item_decrement' value.product_id %}">
+                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                                <input type="text" name="qtybutton" class="form-control form-control-sm text-center border-0" value="{{value.quantity}}">
+                                <div class="input-group-btn">
+                                    <a href="{% url 'item_increment' value.product_id %}">
+                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.{{ value.price|multiply:value.quantity }}</p>
+                        </td>
+                        <td>
+                            <a href="{% url 'item_clear' key %}">
+                                <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                    <i class="fa fa-times text-danger"></i>
+                                </button>
+                            </a>
+                        </td>
+                    
+                    </tr>
+
+                 {% endfor %}
+                    {% comment %} <tr>
+                        <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static '/img/images/mancat_1.jpeg' %}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+                            </div> 
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">Logo T-Shirts</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.899</p>
+                        </td>
+                        <td>
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                    <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.899</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                <i class="fa fa-times text-danger"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="{% static '/img/images/manshop_1.jpeg' %}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+                            </div>
+                        </th>
+                        <td>
+                            <p class="mb-0 mt-4">Denim Jacket</p>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.1499</p>
+                        </td>
+                        <td>
+                            <div class="input-group quantity mt-4" style="width: 100px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                    <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 mt-4">Rs.1499</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                <i class="fa fa-times text-danger"></i>
+                            </button>
+                        </td>
+                    </tr> {% endcomment %}
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5">
+            <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
+            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+            <a href="{% url 'cart_clear' %}"><button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Clear Shopping Cart</button></a>
+            <a href="{% url 'shop' %}"><button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Continue Shopping</button></a>
+        </div>
+        <div class="row g-4 justify-content-end">
+            <div class="col-8"></div>
+            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                <div class="bg-light rounded">
+                    <div class="p-4">
+                        <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="mb-0 me-4">Subtotal:</h5>
+                            <p class="mb-0">Rs.{{cart_total_amount}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-0 me-4">Taxes</h5>
+                            <div class="">
+                                <p class="mb-0">Rs.113</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-0 me-4">Shipping</h5>
+                            <div class="">
+                                <p class="mb-0">free Shipping</p>
+                            </div>
+                        </div>
+                        {% comment %} <p class="mb-0 text-end">Shipping to Tamilnadu.</p> {% endcomment %}
+                    </div>
+                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Grand Total</h5>
+                        <p class="mb-0 pe-4">Rs.{{cart_total_amount | add:113 }}</p>
+                    </div>
+                    {% comment %} <a href="{% url 'checkout' %}"><button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button></a> {% endcomment %}
+                    <form action="{% url 'checkout'%}" method="post">
+                        {%csrf_token%}
+                        <input  value="{{cart_total_amount}}" name="amount" hidden>
+                     <a href=""><button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Checkout</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart Page End -->
+
+{% endif %}
+
+
+{% endblock content %}

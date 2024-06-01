@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Details</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Basic CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+
+.user-details {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-details h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.detail {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+p {
+  margin-top: 5px;
+}
+
+
+/* Centered Button Styles */
+.center-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.checkout-btn {
+  padding: 12px 24px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #2980b9;
+}
+
+
+  </style>
+
+
+</head>
+<body>
+  <div class="user-details">
+    <div class="center-btn">
+      <h2>User Information</h2>
+    </div>
+    <div class="detail">
+      <label for="name">Name:</label>
+      <p id="name">{{uid.name}}</p>
+    </div>
+    <div class="detail">
+      <label for="email">Email:</label>
+      <p id="email">{{uid.email}}</p>
+    </div>
+    <div class="detail">
+      <label for="phone">Phone Number:</label>
+      <p id="phone">+91{{uid.phone_number}}</p>
+    </div>
+    <div class="detail">
+      <label for="address">Address:</label>
+      <p id="address">{{uid.adress}}</p>
+    </div>
+
+    <br>
+    <div class="center-btn">
+      <a href="{% url 'shop' %}" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
